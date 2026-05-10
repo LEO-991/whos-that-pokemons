@@ -1,0 +1,105 @@
+.page-title {
+  font-size: 2rem;
+  color: var(--dark-red);
+  text-align: center;
+}
+
+.page-subtitle {
+  text-align: center;
+  color: var(--dark-gray);
+  margin-bottom: 32px;
+}
+
+.lobby-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 700px) {
+  .lobby-grid { grid-template-columns: 1fr; }
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  color: var(--dark-red);
+  margin-bottom: 8px;
+}
+
+.hint-text {
+  font-size: 0.85rem;
+  color: var(--dark-gray);
+  margin-bottom: 16px;
+}
+
+/* Generation List */
+.gen-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gen-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 2px solid var(--gray);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.15s;
+}
+
+.gen-option input { display: none; }
+
+.gen-option:hover { border-color: var(--blue); background: #eaf3ff; }
+
+.gen-option.selected {
+  border-color: var(--blue);
+  background: #eaf3ff;
+  color: var(--dark-blue);
+}
+
+/* Difficulty List */
+.diff-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.diff-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 10px;
+  border: 2px solid var(--gray);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.diff-option input { display: none; }
+
+.diff-option div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.diff-label { font-weight: 800; font-size: 1rem; }
+.diff-desc { font-size: 0.8rem; color: var(--dark-gray); }
+
+.diff-option.easy-border.selected   { border-color: #4CAF50; background: #f1fdf1; }
+.diff-option.medium-border.selected { border-color: #f57f17; background: #fffbf1; }
+.diff-option.hard-border.selected   { border-color: var(--red); background: #fff0f0; }
+
+.diff-option:hover { border-color: var(--dark-gray); }
+
+/* Start Button */
+.btn-start-game {
+  font-size: 1.3rem;
+  padding: 16px 48px;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}

@@ -1,0 +1,89 @@
+.page-title { font-size: 2rem; color: var(--dark-red); text-align: center; margin-bottom: 8px; }
+
+.banner {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.card h2 { color: var(--dark-blue); margin-bottom: 16px; font-size: 1.1rem; }
+
+/* Create Form */
+.create-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 140px auto;
+  gap: 12px;
+  align-items: center;
+}
+
+@media (max-width: 700px) { .create-form { grid-template-columns: 1fr; } }
+
+/* Table */
+.table-wrap { overflow-x: auto; }
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th {
+  background: var(--light-gray);
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--dark-gray);
+}
+
+.admin-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--gray);
+  vertical-align: middle;
+}
+
+.username-cell { font-weight: 700; }
+
+.role-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.role-badge.admin { background: #fff3e0; color: #e65100; }
+.role-badge.user  { background: #e3f2fd; color: #1565c0; }
+
+.action-cell { display: flex; gap: 8px; align-items: center; }
+
+.btn-sm {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s;
+}
+
+.btn-blue       { background: var(--blue); color: white; }
+.btn-danger-sm  { background: var(--danger); color: white; }
+.btn-success    { background: var(--success); color: white; }
+.btn-gray       { background: var(--gray); color: var(--black); }
+
+.btn-sm:hover { opacity: 0.85; transform: none; box-shadow: none; }
+
+.inline-input, .inline-select {
+  padding: 6px 10px;
+  border: 2px solid var(--blue);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.loading-text { text-align: center; color: var(--dark-gray); padding: 40px; }

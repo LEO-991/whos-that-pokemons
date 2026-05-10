@@ -1,0 +1,58 @@
+<div class="homepage">
+  <div class="hero">
+    <div class="legendary-bg">
+      @for (img of legendaryImages; track img) {
+        <img [src]="img" class="legendary-float" alt="" />
+      }
+    </div>
+    <div class="pokeball-bg">⬤</div>
+    <h1 class="hero-title">Who's That<br><span class="yellow">Pokémon?</span></h1>
+    <p class="hero-subtitle">Test your Pokémon knowledge! Guess the silhouette before time runs out.</p>
+    @if (auth.isLoggedIn()) {
+      <a routerLink="/lobby" class="btn-start">▶ Start Playing</a>
+    } @else {
+      <div class="hero-actions">
+        <a routerLink="/login" class="btn-start">▶ Login to Play</a>
+        <a routerLink="/register" class="btn-register">Create Account</a>
+      </div>
+    }
+  </div>
+
+  <div class="rules-section page-container">
+    <h2 class="section-title">How to Play</h2>
+    <div class="rules-grid">
+      @for (rule of rules; track rule.icon) {
+        <div class="rule-card">
+          <div class="rule-icon">{{ rule.icon }}</div>
+          <h3>{{ rule.title }}</h3>
+          <p>{{ rule.desc }}</p>
+        </div>
+      }
+    </div>
+
+    <div class="difficulty-table card mt-4">
+      <h3>Difficulty Overview</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Difficulty</th>
+            <th>Timer</th>
+            <th>Hints</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (diff of difficultyRows; track diff.label) {
+            <tr [class]="diff.rowClass">
+              <td>
+                <img [src]="diff.icon" width="20" height="20" class="diff-icon" />
+                {{ diff.label }}
+              </td>
+              <td>{{ diff.timer }}</td>
+              <td>{{ diff.hints }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

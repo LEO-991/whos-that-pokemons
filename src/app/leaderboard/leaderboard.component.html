@@ -1,0 +1,44 @@
+<div class="page-container">
+  <h1 class="page-title">🏆 Leaderboard</h1>
+  <p class="page-subtitle">Top trainers ranked by highest score</p>
+
+<button class="tab-btn" [class.active]="activeTab === 'easy'"   (click)="setTab('easy')">
+  <img src="pokeball.ico" width="20" height="20" /> Easy
+</button>
+<button class="tab-btn" [class.active]="activeTab === 'medium'" (click)="setTab('medium')">
+  <img src="ultraBall.ico" width="20" height="20" /> Medium
+</button>
+<button class="tab-btn" [class.active]="activeTab === 'hard'"   (click)="setTab('hard')">
+  <img src="masteball.ico" width="20" height="20" /> Hard
+</button>
+
+  <div class="leaderboard-card card">
+    @if (loading) {
+      <p class="loading-text">Loading rankings...</p>
+    } @else if (currentBoard.length === 0) {
+      <div class="empty-state">
+        <p>🎮 No scores yet for this difficulty!</p>
+        <p>Be the first to set a record.</p>
+      </div>
+    } @else {
+      <table class="lb-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Trainer</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (entry of currentBoard; track entry.rank) {
+            <tr [class.top3]="entry.rank <= 3">
+              <td class="rank-cell">{{ medalFor(entry.rank) }}</td>
+              <td class="username-cell">{{ entry.username }}</td>
+              <td class="score-cell">{{ entry.score }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+  </div>
+</div>

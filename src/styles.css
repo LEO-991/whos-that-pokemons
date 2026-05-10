@@ -1,0 +1,129 @@
+/* ─── Global Styles ─────────────────────────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --red: #CC0000;
+  --dark-red: #990000;
+  --yellow: #FFCB05;
+  --dark-yellow: #E6A800;
+  --blue: #3D7DCA;
+  --dark-blue: #003A70;
+  --white: #FFFFFF;
+  --light-gray: #F5F5F5;
+  --gray: #CCCCCC;
+  --dark-gray: #555555;
+  --black: #1A1A1A;
+  --success: #4CAF50;
+  --danger: #F44336;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--light-gray);
+  color: var(--black);
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-weight: 800;
+}
+
+button {
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+input, select {
+  font-family: 'Nunito', sans-serif;
+  border: 2px solid var(--gray);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus, select:focus {
+  border-color: var(--blue);
+}
+
+.btn-primary {
+  background-color: var(--red);
+  color: var(--white);
+  font-size: 1rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--dark-red);
+}
+
+.btn-secondary {
+  background-color: var(--blue);
+  color: var(--white);
+  font-size: 1rem;
+}
+
+.btn-secondary:hover {
+  background-color: var(--dark-blue);
+}
+
+.btn-yellow {
+  background-color: var(--yellow);
+  color: var(--black);
+  font-size: 1rem;
+}
+
+.btn-yellow:hover {
+  background-color: var(--dark-yellow);
+}
+
+.btn-danger {
+  background-color: var(--danger);
+  color: var(--white);
+}
+
+.card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.error-msg {
+  color: var(--danger);
+  font-size: 0.875rem;
+  margin-top: 6px;
+}
+
+.success-msg {
+  color: var(--success);
+  font-size: 0.875rem;
+  margin-top: 6px;
+}
+
+.page-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+.text-center { text-align: center; }
+.mt-1 { margin-top: 8px; }
+.mt-2 { margin-top: 16px; }
+.mt-3 { margin-top: 24px; }
+.mt-4 { margin-top: 32px; }

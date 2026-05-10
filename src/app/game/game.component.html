@@ -1,0 +1,106 @@
+<!-- Game Over Screen -->
+@if (gameOver) {
+  <div class="game-over-overlay">
+    <div class="game-over-card card">
+      <div class="game-over-icon">🏆</div>
+      <h2>Game Over!</h2>
+      <p class="final-score">Final Score: <strong>{{ score }}</strong></p>
+      <p class="difficulty-badge" [class]="difficulty">{{ difficulty | titlecase }}</p>
+      <div class="game-over-actions">
+        <button class="btn-yellow" (click)="playAgain()">🎮 Play Again</button>
+        <a routerLink="/leaderboards" class="btn-secondary btn-link">🏆 Leaderboards</a>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- Main Game -->
+@if (!gameOver) {
+  <div class="game-page page-container">
+    <!-- HUD -->
+    <div class="hud">
+      <div class="hud-item">
+        <span class="hud-label">Round</span>
+        <span class="hud-value">{{ round }}/{{ maxRounds }}</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">Score</span>
+        <span class="hud-value score">{{ score }}</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">Streak</span>
+        <span class="hud-value streak">🔥 {{ streak }}</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">Difficulty</span>
+        <span class="hud-value" [class]="difficulty">{{ difficulty | titlecase }}</span>
+      </div>
+    </div>
+
+    <!-- Timer Bar -->
+    @if (!loading && !revealed) {
+      <div class="timer-bar-wrap">
+        <div class="timer-bar" [class]="timerClass" [style.width.%]="timerPercent"></div>
+      </div>
+      <p class="timer-text" [class]="timerClass">⏱ {{ timeLeft }}s</p>
+    }
+
+    <!-- Pokémon Display -->
+    <div class="pokemon-display card">
+      @if (loading) {
+        <div class="loading-spinner">
+          <div class="pokeball-spin">⬤</div>
+          <p>Loading Pokémon...</p>
+        </div>
+      } @else {
+        <p class="who-text">Who's That Pokémon?</p>
+
+        <div class="silhouette-wrap">
+          <img
+            [src]="silhouetteUrl"
+            [class.silhouette]="!revealed"
+            [class.revealed]="revealed"
+            alt="mystery pokemon"
+          />
+        </div>
+
+        @if (revealed) {
+          <p class="pokemon-name">{{ capitalize(currentPokemon.name) }}</p>
+          <p class="result-text" [class.correct]="isCorrect" [class.wrong]="!isCorrect">
+            {{ isCorrect ? '✅ Correct!' : '❌ Wrong!' }}
+          </p>
+        }
+
+        <!-- Hints -->
+        @if (!revealed) {
+          <div class="hints">
+            @if (showType) {
+              <span class="hint-badge type">Type: {{ hints.type }}</span>
+            }
+            @if (showRegion) {
+              <span class="hint-badge region">Region: {{ hints.region }}</span>
+            }
+          </div>
+        }
+      }
+    </div>
+
+    <!-- Choices -->
+    @if (!loading) {
+      <div class="choices-grid">
+        @for (choice of choices; track choice.id) {
+          <button
+            class="choice-btn"
+            [class.correct-choice]="revealed && choice.id === currentPokemon.id"
+            [class.wrong-choice]="revealed && selectedAnswer?.id === choice.id && choice.id !== currentPokemon.id"
+            [class.dimmed]="revealed && choice.id !== currentPokemon.id && selectedAnswer?.id !== choice.id"
+            [disabled]="revealed"
+            (click)="selectAnswer(choice)"
+          >
+            {{ capitalize(choice.name) }}
+          </button>
+        }
+      </div>
+    }
+  </div>
+}

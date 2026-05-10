@@ -1,0 +1,59 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 64px);
+  text-align: center;
+  padding: 24px;
+}
+
+.silhouette-404 {
+  font-size: 6rem;
+  filter: brightness(0);
+  margin-bottom: 16px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.code {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 4rem;
+  color: var(--red);
+  margin-bottom: 12px;
+  text-shadow: 4px 4px 0 rgba(204,0,0,0.2);
+}
+
+.message {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--dark-red);
+  margin-bottom: 8px;
+}
+
+.sub {
+  color: var(--dark-gray);
+  margin-bottom: 32px;
+}
+
+.btn-home {
+  display: inline-block;
+  background: var(--red);
+  color: white;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 14px 32px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(204,0,0,0.3);
+}
+
+.btn-home:hover {
+  background: var(--dark-red);
+  transform: translateY(-3px);
+}

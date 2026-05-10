@@ -1,0 +1,44 @@
+<div class="lobby-page page-container">
+  <h1 class="page-title">🎮 Game Lobby</h1>
+  <p class="page-subtitle">Set up your challenge before heading into battle!</p>
+
+  <div class="lobby-grid">
+    <!-- Generation Picker -->
+    <div class="card">
+      <h2>🌍 Choose Generation</h2>
+      <p class="hint-text">Which Pokémon region do you want to be quizzed on?</p>
+      <div class="gen-list">
+        @for (gen of generations; track gen.value) {
+          <label class="gen-option" [class.selected]="selectedGeneration === gen.value">
+            <input type="radio" [(ngModel)]="selectedGeneration" [value]="gen.value" name="generation" />
+            {{ gen.label }}
+          </label>
+        }
+      </div>
+    </div>
+
+    <!-- Difficulty Picker -->
+    <div class="card">
+      <h2>⚔️ Choose Difficulty</h2>
+      <p class="hint-text">Higher difficulty = less time and fewer hints.</p>
+      <div class="diff-list">
+            @for (diff of difficulties; track diff.value) {
+              <label class="diff-option" [class.selected]="selectedDifficulty === diff.value" [class]="diff.value + '-border'">
+                <input type="radio" [(ngModel)]="selectedDifficulty" [value]="diff.value" name="difficulty" />
+                <img [src]="diff.icon" width="28" height="28" style="object-fit:contain;" />
+                <div>
+                  <span class="diff-label">{{ diff.label }}</span>
+                  <span class="diff-desc">{{ diff.desc }}</span>
+                </div>
+              </label>
+            }
+      </div>
+    </div>
+  </div>
+
+  <div class="start-section text-center mt-4">
+    <button class="btn-start-game btn-yellow" (click)="startGame()">
+      ⚡ Start Game!
+    </button>
+  </div>
+</div>

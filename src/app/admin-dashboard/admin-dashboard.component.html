@@ -1,0 +1,72 @@
+<div class="page-container">
+  <h1 class="page-title">🛡️ Admin Dashboard</h1>
+
+  @if (message) { <p class="success-msg banner" (click)="clearMessages()">✅ {{ message }} (click to dismiss)</p> }
+  @if (error)   { <p class="error-msg banner"   (click)="clearMessages()">⚠️ {{ error }} (click to dismiss)</p> }
+
+  <!-- Create User -->
+  <div class="card mt-3">
+    <h2>➕ Create New User</h2>
+    <div class="create-form">
+      <input type="text"     [(ngModel)]="newUser.username" placeholder="Username" />
+      <input type="password" [(ngModel)]="newUser.password" placeholder="Password" />
+      <select [(ngModel)]="newUser.role">
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+      </select>
+      <button class="btn-primary" (click)="createUser()" [disabled]="creating">
+        {{ creating ? 'Creating...' : 'Create User' }}
+      </button>
+    </div>
+  </div>
+
+  <!-- User Table -->
+  <div class="card mt-4">
+    <h2>👥 All Users ({{ users.length }})</h2>
+
+    @if (loading) {
+      <p class="loading-text">Loading users...</p>
+    } @else {
+      <div class="table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Role</th>
+              <th>Created</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (user of users; track user._id) {
+              <tr>
+                @if (editingUser?._id === user._id) {
+                  <td><input [(ngModel)]="editForm.username" class="inline-input" /></td>
+                  <td>
+                    <select [(ngModel)]="editForm.role" class="inline-select">
+                      <option value="user">user</option>
+                      <option value="admin">admin</option>
+                    </select>
+                  </td>
+                  <td>{{ user.createdAt | date:'mediumDate' }}</td>
+                  <td class="action-cell">
+                    <button class="btn-sm btn-success" (click)="saveEdit()">Save</button>
+                    <button class="btn-sm btn-gray"    (click)="cancelEdit()">Cancel</button>
+                  </td>
+                } @else {
+                  <td class="username-cell">{{ user.username }}</td>
+                  <td><span class="role-badge" [class]="user.role">{{ user.role }}</span></td>
+                  <td>{{ user.createdAt | date:'mediumDate' }}</td>
+                  <td class="action-cell">
+                    <button class="btn-sm btn-blue"      (click)="startEdit(user)">Edit</button>
+                    <button class="btn-sm btn-danger-sm" (click)="deleteUser(user)">Delete</button>
+                  </td>
+                }
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+  </div>
+</div>

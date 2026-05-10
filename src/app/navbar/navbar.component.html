@@ -1,0 +1,26 @@
+<header class="navbar">
+  <div class="navbar-brand">
+    <a routerLink="/">
+      <img src="pokeball.ico" width="24" height="24" style="vertical-align:middle; margin-right:8px;">
+       Who's That Pokémon?</a>
+  </div>
+  <nav class="navbar-links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+    @if (auth.isLoggedIn()) {
+      <a routerLink="/lobby" routerLinkActive="active">Lobby</a>
+    }
+    <a routerLink="/leaderboards" routerLinkActive="active">Leaderboard</a>
+    @if (auth.isLoggedIn()) {
+      <a routerLink="/user-menu" routerLinkActive="active">
+        🙎‍♂️ {{ auth.getCurrentUser()?.username }}
+      </a>
+      @if (auth.isAdmin()) {
+        <a routerLink="/admin" routerLinkActive="active"> ⚙ Admin</a>
+      }
+      <button class="btn-logout" (click)="logout()">Logout</button>
+    } @else {
+      <a routerLink="/login" routerLinkActive="active">Login</a>
+      <a routerLink="/register" class="btn-register">Register</a>
+    }
+  </nav>
+</header>

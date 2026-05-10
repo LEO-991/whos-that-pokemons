@@ -1,0 +1,246 @@
+/* ─── HUD ────────────────────────────────────────────────────────────────────── */
+.hud {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.hud-item {
+  background: white;
+  border-radius: 12px;
+  padding: 12px 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  min-width: 90px;
+}
+
+.hud-label { display: block; font-size: 0.7rem; text-transform: uppercase; color: var(--dark-gray); letter-spacing: 1px; }
+.hud-value { display: block; font-size: 1.3rem; font-weight: 800; color: var(--black); margin-top: 4px; }
+.hud-value.score { color: var(--dark-blue); }
+.hud-value.streak { color: var(--red); }
+.hud-value.easy   { color: #2e7d32; }
+.hud-value.medium { color: #f57f17; }
+.hud-value.hard   { color: var(--red); }
+
+/* ─── Timer ──────────────────────────────────────────────────────────────────── */
+.timer-bar-wrap {
+  height: 10px;
+  background: var(--gray);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.timer-bar {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 1s linear, background 0.5s;
+}
+
+.timer-bar.safe    { background: var(--success); }
+.timer-bar.warning { background: var(--yellow); }
+.timer-bar.danger  { background: var(--danger); }
+
+.timer-text {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.timer-text.safe    { color: var(--success); }
+.timer-text.warning { color: #f57f17; }
+.timer-text.danger  { color: var(--danger); }
+
+/* ─── Pokémon Display ────────────────────────────────────────────────────────── */
+.pokemon-display {
+  text-align: center;
+  margin-bottom: 24px;
+  padding: 32px;
+}
+
+.who-text {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.85rem;
+  color: var(--dark-red);
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.silhouette-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.silhouette-wrap img {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+  transition: filter 0.5s ease;
+}
+
+.silhouette { filter: brightness(0); }
+.revealed   { filter: brightness(1) drop-shadow(0 4px 12px rgba(0,0,0,0.15)); }
+
+.pokemon-name {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.1rem;
+  color: var(--dark-red);
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.result-text {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.result-text.correct { color: var(--success); }
+.result-text.wrong   { color: var(--danger); }
+
+/* Hints */
+.hints {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.hint-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.hint-badge.type   { background: #e3f2fd; color: #1565c0; }
+.hint-badge.region { background: #f3e5f5; color: #6a1b9a; }
+
+/* Loading */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px;
+}
+
+.pokeball-spin {
+  font-size: 3rem;
+  animation: spin 1s linear infinite;
+  color: var(--red);
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── Choices ────────────────────────────────────────────────────────────────── */
+.choices-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.choice-btn {
+  background: white;
+  border: 2px solid var(--gray);
+  color: var(--black);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 16px 12px;
+  border-radius: 12px;
+  transition: all 0.15s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.choice-btn:not([disabled]):hover {
+  border-color: var(--blue);
+  background: #eaf3ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+}
+
+.choice-btn.correct-choice {
+  background: #e8f5e9;
+  border-color: var(--success);
+  color: #2e7d32;
+}
+
+.choice-btn.wrong-choice {
+  background: #ffebee;
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.choice-btn.dimmed {
+  opacity: 0.45;
+}
+
+/* ─── Game Over ──────────────────────────────────────────────────────────────── */
+.game-over-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.game-over-card {
+  text-align: center;
+  max-width: 380px;
+  width: 90%;
+  padding: 40px;
+}
+
+.game-over-icon { font-size: 4rem; margin-bottom: 12px; }
+
+.game-over-card h2 {
+  font-size: 1.8rem;
+  color: var(--dark-red);
+  margin-bottom: 16px;
+}
+
+.final-score { font-size: 1.1rem; margin-bottom: 8px; }
+.final-score strong { font-size: 2rem; color: var(--blue); }
+
+.difficulty-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  text-transform: capitalize;
+}
+
+.difficulty-badge.easy   { background: #e8f5e9; color: #2e7d32; }
+.difficulty-badge.medium { background: #fff8e1; color: #f57f17; }
+.difficulty-badge.hard   { background: #ffebee; color: var(--red); }
+
+.game-over-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 8px;
+  white-space: nowrap;
+}

@@ -1,0 +1,41 @@
+<div class="auth-page">
+  <div class="auth-card card">
+    <div class="auth-header">
+      <div class="pokeball">
+         <img src="pokeball.ico" width="48" height="48" />
+      </div>
+      <h2>Become a Trainer!</h2>
+      <p>Create your account and start guessing</p>
+    </div>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input id="username" type="text" [(ngModel)]="username" name="username" placeholder="Choose a username" autocomplete="username" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" type="password" [(ngModel)]="password" name="password" placeholder="At least 6 characters" autocomplete="new-password" />
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" type="password" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Repeat your password" autocomplete="new-password" />
+      </div>
+
+      @if (error) {
+        <p class="error-msg">⚠️ {{ error }}</p>
+      }
+      @if (success) {
+        <p class="success-msg">✅ {{ success }}</p>
+      }
+
+      <button type="submit" class="btn-primary btn-full" [disabled]="loading">
+        {{ loading ? 'Creating account...' : '✨ Register' }}
+      </button>
+    </form>
+
+    <p class="auth-footer">
+      Already have an account? <a routerLink="/login">Login here</a>
+    </p>
+  </div>
+</div>

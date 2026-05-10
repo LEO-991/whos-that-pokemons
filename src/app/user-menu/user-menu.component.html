@@ -1,0 +1,75 @@
+<div class="page-container">
+  <h1 class="page-title">🙍‍♂️ My Profile</h1>
+
+  @if (loading) {
+    <p class="loading-text">Loading profile...</p>
+  } @else {
+    <div class="profile-grid">
+
+      <!-- Profile Info -->
+      <div class="card">
+        <h2>🎖️ Trainer Info</h2>
+        <div class="profile-info">
+          <div class="avatar">{{ user?.username?.charAt(0)?.toUpperCase() }}</div>
+          <div>
+            <p class="username">{{ user?.username }}</p>
+            <p class="role-badge" [class]="user?.role">{{ user?.role }}</p>
+          </div>
+        </div>
+
+        <h3 class="mt-3">Best Scores</h3>
+          <div class="score-grid">
+            @for (diff of scoreDiffs; track diff.key) {
+              <div class="score-item" [class]="diff.key">
+                <img [src]="diff.icon" width="24" height="24" class="score-icon" />
+                <span class="score-label">{{ diff.label }}</span>
+                <span class="score-val">{{ scoreFor(diff.key) }}</span>
+              </div>
+            }
+          </div>
+      </div>
+
+      <!-- Settings -->
+      <div class="card">
+        <h2>⚙️ Settings</h2>
+
+        <div class="form-group mt-2">
+          <label>Change Username</label>
+          <input type="text" [(ngModel)]="newUsername" placeholder="New username" />
+          @if (usernameMsg)   { <p class="success-msg">{{ usernameMsg }}</p> }
+          @if (usernameError) { <p class="error-msg">{{ usernameError }}</p> }
+          <button class="btn-secondary mt-1" (click)="updateUsername()">Save Username</button>
+        </div>
+
+        <div class="danger-zone mt-4">
+          <h3>Danger Zone</h3>
+          <button class="btn-danger mt-2" (click)="deleteHistory()">🗑️ Delete History</button>
+          <button class="btn-danger mt-2" (click)="deleteAccount()">💀 Delete Account</button>
+          <button class="btn-logout mt-2" (click)="logout()">🚪 Logout</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- History -->
+    <div class="card mt-4">
+      <div class="history-header">
+        <h2>📜 Recent History</h2>
+        <span class="history-count">{{ history.length }} entries</span>
+      </div>
+
+      @if (history.length === 0) {
+        <p class="empty-text">No game history yet. Start playing!</p>
+      } @else {
+        <div class="history-list">
+          @for (entry of history; track $index) {
+            <div class="history-item" [class]="entry.result">
+              <span class="history-pokemon">{{ entry.pokemonName | titlecase }}</span>
+              <span class="history-result">{{ entry.result === 'correct' ? '✅' : '❌' }}</span>
+              <span class="history-date">{{ entry.date | date:'short' }}</span>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>

@@ -1,0 +1,66 @@
+.navbar {
+  background: linear-gradient(135deg, var(--red), var(--dark-red));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 64px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-brand a {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.75rem;
+  color: var(--yellow);
+  text-decoration: none;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+  letter-spacing: 1px;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.navbar-links a:hover,
+.navbar-links a.active {
+  background: rgba(255,255,255,0.2);
+}
+
+.btn-register {
+  background: var(--yellow);
+  color: var(--black) !important;
+  padding: 8px 16px !important;
+  border-radius: 8px !important;
+}
+
+.btn-logout {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 2px solid white;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.btn-logout:hover {
+  background: white;
+  color: var(--red);
+  transform: none;
+  box-shadow: none;
+}
