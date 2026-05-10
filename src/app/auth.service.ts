@@ -5,7 +5,7 @@ import { Observable, tap } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private http = inject(HttpClient);
-  private apiUrl = '/api';
+  private apiUrl = 'https://whos-that-pokemons.onrender.com/api';
 
   register(username: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, { username, password });

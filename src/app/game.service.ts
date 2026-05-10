@@ -12,7 +12,7 @@ export interface GameSettings {
 export class GameService {
   private http = inject(HttpClient);
   private auth = inject(AuthService);
-  private apiUrl = '/api';
+  private apiUrl = 'https://whos-that-pokemons.onrender.com/api';
 
   private difficultyConfig: { easy: { timer: number; hints: string[] }; medium: { timer: number; hints: string[] }; hard: { timer: number; hints: string[] } } = {
     easy:   { timer: 30, hints: ['type', 'region'] },

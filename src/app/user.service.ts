@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
 export class UserService {
   private http = inject(HttpClient);
   private auth = inject(AuthService);
-  private apiUrl = '/api';
+  private apiUrl = 'https://whos-that-pokemons.onrender.com/api';
 
   private headers(): HttpHeaders {
     return new HttpHeaders({ Authorization: `Bearer ${this.auth.getToken()}` });
