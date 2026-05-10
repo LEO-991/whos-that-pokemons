@@ -22,7 +22,7 @@
 
   <!-- User Table -->
   <div class="card mt-4">
-    <h2>👥 All Users ({{ users.length }})</h2>
+    <h2>👥 All Users ({{ nonAdminUsers.length }})</h2>
 
     @if (loading) {
       <p class="loading-text">Loading users...</p>
@@ -38,7 +38,7 @@
             </tr>
           </thead>
           <tbody>
-            @for (user of users; track user._id) {
+            @for (user of nonAdminUsers; track user._id) {
               <tr>
                 @if (editingUser?._id === user._id) {
                   <td><input [(ngModel)]="editForm.username" class="inline-input" /></td>
@@ -59,6 +59,7 @@
                   <td>{{ user.createdAt | date:'mediumDate' }}</td>
                   <td class="action-cell">
                     <button class="btn-sm btn-blue"      (click)="startEdit(user)">Edit</button>
+                    <button class="btn-sm btn-danger-sm" (click)="deleteUser(user)">Delete</button>
                   </td>
                 }
               </tr>

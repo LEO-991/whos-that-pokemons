@@ -28,6 +28,10 @@ export class AdminDashboardComponent implements OnInit {
   editingUser: any = null;
   editForm = { username: '', role: 'user' };
 
+  get nonAdminUsers(): any[] {
+    return this.users.filter(u => u.role !== 'admin');
+  }
+
   ngOnInit(): void {
     if (!this.authService.isAdmin()) {
       this.router.navigate(['/']);

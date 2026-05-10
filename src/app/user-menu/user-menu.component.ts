@@ -16,7 +16,7 @@ import { AuthService } from '../auth.service';
 export class UserMenuComponent implements OnInit {
   private userService = inject(UserService);
   private gameService = inject(GameService);
-  private authService = inject(AuthService);
+  authService = inject(AuthService);
   private router = inject(Router);
 
   user: any = null;
@@ -27,11 +27,11 @@ export class UserMenuComponent implements OnInit {
   usernameError = '';
   loading = true;
 
-scoreDiffs = [
-  { key: 'easy',   label: 'Easy',   icon: 'pokeball.ico' },
-  { key: 'medium', label: 'Medium', icon: 'ultraBall.ico' },
-  { key: 'hard',   label: 'Hard',   icon: 'masteball.ico' }
-];
+  scoreDiffs = [
+    { key: 'easy',   label: 'Easy',   icon: 'pokeball.ico' },
+    { key: 'medium', label: 'Medium', icon: 'ultraBall.ico' },
+    { key: 'hard',   label: 'Hard',   icon: 'masteball.ico' }
+  ];
 
   ngOnInit(): void {
     this.loadData();

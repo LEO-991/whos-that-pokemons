@@ -44,8 +44,9 @@
         <div class="danger-zone mt-4">
           <h3>Danger Zone</h3>
           <button class="btn-danger mt-2" (click)="deleteHistory()">🗑️ Delete History</button>
-          <button class="btn-danger mt-2" (click)="deleteAccount()">💀 Delete Account</button>
-          <button class="btn-logout mt-2" (click)="logout()">🚪 Logout</button>
+          @if (!authService.isAdmin()) {
+            <button class="btn-danger mt-2" (click)="deleteAccount()">💀 Delete Account</button>
+          }
         </div>
       </div>
     </div>
